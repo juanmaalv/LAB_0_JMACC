@@ -65,22 +65,22 @@ df_pe['mes'] = [df_pe['TimeStamp'][i].month for i in range(0, len(df_pe['TimeSta
 #%% -- 02: Sesion de la vela.
 df_pe["sesion"] = np.zeros(len(df_pe['High']))
 
-for i in range(1, len(df_pe['High'])):
+for i in range(0, len(df_pe['High'])):
     
-    if  df_pe["hora"] > 21 or df_pe["hora"] <8:
+    if  df_pe["hora"][i] > 21 or  df_pe["hora"][i] <8:
         df_pe['sesion'][i] = "asia"
         
-    elif  df_pe["hora"] == 0:
+    elif  df_pe["hora"][i] == 0:
         df_pe['sesion'][i] = "asia_europa"
         
-    elif  df_pe["hora"] > 8 and df_pe["hora"] <13:
+    elif  df_pe["hora"][i] > 8 and df_pe["hora"][i] <13:
         df_pe['sesion'][i] = "europa"
         
-    elif  df_pe["hora"] > 12 and df_pe["hora"] <17:
+    elif  df_pe["hora"][i] > 12 and df_pe["hora"][i] <17:
         df_pe['sesion'][i] = "europa_america"
         
     else:
-        df_pe['sentido_c'][i] = "america"
+        df_pe['sesion'][i] = "america"
 
 
 #%% -- 03: Amplitud OC esperada de vela para cualquier dia de la semana (Dist de Freq).
